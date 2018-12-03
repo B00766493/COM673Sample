@@ -26,10 +26,18 @@ public class MyUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         String connectionString
-        = "jdbc:sqlserver://classdb.database.windows.net:1433;"+
-        "database=classDB;"+
-        "user=michelle@classdb;"+
-        "password={Cloud18!};"+
+        //jdbc:sqlserver://b00766493.database.windows.net:1433;
+        //database=B00766493-assignment;
+        //user=B00766493@b00766493;
+        //password={Eoin2018*};
+        //encrypt=true;
+        //trustServerCertificate=false;
+        //hostNameInCertificate=*.database.windows.net;
+        //loginTimeout=30;
+        = "jdbc:sqlserver://b00766493.database.windows.net:1433;"+
+        "database=B00766493-assignment;"+
+        "user=B00766493@b00766493;"+
+        "password={Eoin2018*};"+
         "encrypt=true;"+
         "trustServerCertificate=false;"+
         "hostNameInCertificate=*.database.windows.net;"+
