@@ -56,10 +56,10 @@ List<Customer> customers = new ArrayList<Customer>();
 while(rs.next())
 {   
 	// Add a new Customer instantiated with the fields from the record (that we want, we might not want all the fields, note how I skip the id)
-	customers.add(new Customer(rs.getString("first_name"), 
-				rs.getString("last_name"), 
-				rs.getBoolean("paid"), 
-				rs.getDouble("amount")));
+	customers.add(new Customer(rs.getString("Room_Name"), 
+				rs.getString("Capacity"), 
+				rs.getBoolean("Alcahol"), 
+				rs.getString("Activity")));
 }// Add a label to the web app with the message and name of the database we connected to 
 	//layout.addComponent(new Label("Connected to database: " + connection.getCatalog()));
 // Execute a query against the database and return rows (if any) to the ResultSet
@@ -68,10 +68,10 @@ Grid<Customer> myGrid = new Grid<>();
 // Set the items (List)
 myGrid.setItems(customers);
 // Configure the order and the caption of the grid
-myGrid.addColumn(Customer::getFirst_name).setCaption("Name");
-myGrid.addColumn(Customer::getLast_name).setCaption("Surname");
-myGrid.addColumn(Customer::getAmount).setCaption("Total Amount");
-myGrid.addColumn(Customer::isPaid).setCaption("Paid");
+myGrid.addColumn(Customer::getRoom_Name).setCaption("Name");
+myGrid.addColumn(Customer::getCapacity).setCaption("Surname");
+myGrid.addColumn(Customer::getActivity).setCaption("Total Activity");
+myGrid.addColumn(Customer::isAlcahol).setCaption("Alcahol");
 
 // Add the grid to the list
 layout.addComponent(myGrid);
