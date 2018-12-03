@@ -68,10 +68,10 @@ Grid<Customer> myGrid = new Grid<>();
 // Set the items (List)
 myGrid.setItems(customers);
 // Configure the order and the caption of the grid
-myGrid.addColumn(Customer::getRoom_Name).setCaption("Name");
-myGrid.addColumn(Customer::getCapacity).setCaption("Surname");
-myGrid.addColumn(Customer::getActivity).setCaption("Total Activity");
-myGrid.addColumn(Customer::isAlcahol).setCaption("Alcahol");
+myGrid.addColumn(Customer::getRoom_Name).setCaption("Room Name");
+myGrid.addColumn(Customer::getCapacity).setCaption("Capacity");
+myGrid.addColumn(Customer::isAlcahol).setCaption("Serves Alcahol");
+myGrid.addColumn(Customer::getActivity).setCaption("Activity");
 
 // Add the grid to the list
 layout.addComponent(myGrid);
