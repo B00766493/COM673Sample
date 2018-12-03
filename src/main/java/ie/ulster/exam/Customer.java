@@ -1,48 +1,48 @@
 package ie.ulster.exam;
 class Customer
 {
-    private String first_name;
-    private String last_name;
-    private boolean paid;
-    private double amount;
+    private String Room_Name;
+    private String Capacity;
+    private boolean Alcahol;
+    private String Activity;
 
-    Customer(String first_name, String last_name, boolean paid, double amount)
+    Customer(String Room_name, String Capacity, boolean Alcahol, String Activity)
     {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.paid = paid;
-        this.amount = amount;
+        this.Room_Name = Room_Name;
+        this.Capacity = Capacity;
+        this.Alcahol = Alcahol;
+        this.Activity = Activity;
     }
 	
-	public String getFirst_name() {
-		return first_name;
+	public String getRoom_name() {
+		return Room_Name;
 	}
 	
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setRoom_name(String Room_name) {
+		this.Room_name = Room_name;
 	}
 	
-	public String getLast_name() {
-		return last_name;
+	public String getCapacity() {
+		return Capacity;
 	}
 	
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setCapacity(String Capacity) {
+		this.Capacity = Capacity;
 	}
 	
-	public boolean isPaid() {
-		return paid;
+	public boolean isAlcahol() {
+		return Alcahol;
 	}
 	
-	public void setPaid(boolean paid) {
-		this.paid = paid;
+	public void setAlcahol(boolean Alcahol) {
+		this.Alcahol = Alcahol;
 	}
 	
-	public double getAmount() {
-		return amount;
+	public String getActivity() {
+		return Activity;
 	}
 	
-	public void setAmount(double amount) {
-		this.amount = amount;
+	public void setActivity(String Activity) {
+		this.Activity = Activity;
 	}
 }
