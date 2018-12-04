@@ -45,4 +45,5 @@ class Customer
 	public void setActivity(String Activity) {
 		this.Activity = Activity;
 	}
+	 
 }

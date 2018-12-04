@@ -14,6 +14,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.*;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Grid.SelectionMode;
+import com.vaadin.shared.ui.*;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -103,8 +104,8 @@ Label logo = new Label
 
         Slider s = new Slider("How many people are invited to this party:", 1, 200);
         s.setValue(100.0);
-        s.setWidth(s.getMax()+"px");
-   
+        //s.setWidth(s.getMax()+"px");
+        s.setWidth("500px");// setslider width to 500 PIXELS
         s.addValueChangeListener(e ->{
             double x = s.getValue();
             value.setValue(""+x);
@@ -125,9 +126,9 @@ Label logo = new Label
 
         Button button = new Button("Book");
         button.addClickListener(e -> {
-            //if(Customer.Room_Name.length ==0){
-              //  return ("<strong> Please select at least one room <strong>",
-                // ContentMode.HTML);}
+        //if(Customer.Room_Name.length ==0){
+        //return ("<strong> Please select at least one room.<strong>",
+        //ContentMode.HTML);}
             //if (value.length() ==0 ){ return"Please enter party name";}
             //if (children.length()==0){return "Please 
             //confirm if children attending your party";}
