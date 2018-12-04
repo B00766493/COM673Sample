@@ -6,7 +6,7 @@ class Customer
     private boolean Alcahol;
     private String Activity;
 
-    Customer(String Room_name, String Capacity, boolean Alcahol, String Activity)
+    Customer(String Room_Name, String Capacity, boolean Alcahol, String Activity)
     {
         this.Room_Name = Room_Name;
         this.Capacity = Capacity;
@@ -14,12 +14,12 @@ class Customer
         this.Activity = Activity;
     }
 	
-	public String getRoom_name() {
+	public String getRoom_Name() {
 		return Room_Name;
 	}
 	
-	public void setRoom_name(String Room_name) {
-		this.Room_name = Room_name;
+	public void setRoom_Name(String Room_Name) {
+		this.Room_Name = Room_Name;
 	}
 	
 	public String getCapacity() {

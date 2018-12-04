@@ -7,6 +7,7 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.shared.ui.ContentMode;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
@@ -26,14 +27,7 @@ public class MyUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         String connectionString
-        //jdbc:sqlserver://b00766493.database.windows.net:1433;
-        //database=B00766493-assignment;
-        //user=B00766493@b00766493;
-        //password={Eoin2018*};
-        //encrypt=true;
-        //trustServerCertificate=false;
-        //hostNameInCertificate=*.database.windows.net;
-        //loginTimeout=30;
+    
         = "jdbc:sqlserver://b00766493.database.windows.net:1433;"+
         "database=B00766493-assignment;"+
         "user=B00766493@b00766493;"+
@@ -45,6 +39,7 @@ public class MyUI extends UI {
 
         Connection connection = null;
         final VerticalLayout layout = new VerticalLayout();
+        
         try 
 {
 	// Connect with JDBC driver to a database
@@ -68,10 +63,12 @@ Grid<Customer> myGrid = new Grid<>();
 // Set the items (List)
 myGrid.setItems(customers);
 // Configure the order and the caption of the grid
-myGrid.addColumn(Customer::getRoom_Name).setCaption("Room Name");
+myGrid.addColumn(Customer::getRoom_Name).setCaption("Room ");
 myGrid.addColumn(Customer::getCapacity).setCaption("Capacity");
-myGrid.addColumn(Customer::isAlcahol).setCaption("Serves Alcahol");
-myGrid.addColumn(Customer::getActivity).setCaption("Activity");
+myGrid.addColumn(Customer::getActivity).setCaption("Alcahol Allowed");
+myGrid.addColumn(Customer::isAlcahol).setCaption("Feature");
+//myGrid.setSelectionMode(SelectionMode.MULTI);
+myGrid.setSizeFull();
 
 // Add the grid to the list
 layout.addComponent(myGrid);
@@ -83,18 +80,57 @@ catch (Exception e)
 	layout.addComponent(new Label(e.getMessage()));
 }
 setContent(layout);
-        
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
 
-        Button button = new Button("Click Me");
+HorizontalLayout v = new HorizontalLayout(); //sub layout 1
+Label logo = new Label
+("<H1>Marty Party Planners</H1> <p/> <h3>Please enter the details below and click Book</h3><br>", ContentMode.HTML);
+//VerticalLayout v2 = new VerticalLayout();//sub layout 2
+        final TextField name = new TextField();
+        name.setCaption("Name of party:");
+
+        Label label = new Label ("B00766493");
+
+        final TextField value = new TextField();
+        value.setCaption("How many people are invited to this party:");
+        value.setPlaceholder(" ");
+        
+        //dropdown selections
+        ComboBox<String> children = new ComboBox<String>("Children Attending");
+        children.setItems("Yes","No"); // the options availible 
+        children.setPlaceholder("No option selected"); //same as TextField placeholder
+
+        Slider s = new Slider("Value", 1, 200);
+        s.setValue(100.0);
+        s.setWidth(s.getMax()+"px");
+   
+        s.addValueChangeListener(e ->{
+            double x = s.getValue();
+            value.setValue(""+x);
+        });
+
+        value.addValueChangeListener(e ->{
+            
+            double x = Double.parseDouble(value.getValue());
+            if (x>s.getMax()){
+               s.setMax(x);
+               s.setWidth(x+"px");
+            }
+            else if (x<s.getMin()){
+                x = s.getMin();
+            }
+            s.setValue(x);
+        });
+
+        Button button = new Button("Book");
         button.addClickListener(e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
+            layout.addComponent(new Label("Your party " + name.getValue() 
+                    + ", is now booked"));
         });
         
-        layout.addComponents(name, button);
-        
+        layout.addComponents( button,label);
+        v.addComponents(name, s, children); //build sub layout
+  //      v2.addComponents(button, button2); //build sub layout
+        layout.addComponents(logo,v); // build master layout
         setContent(layout);
     }
 
