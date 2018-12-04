@@ -13,6 +13,7 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.*;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Grid.SelectionMode;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -67,7 +68,7 @@ myGrid.addColumn(Customer::getRoom_Name).setCaption("Room ");
 myGrid.addColumn(Customer::getCapacity).setCaption("Capacity");
 myGrid.addColumn(Customer::getActivity).setCaption("Alcahol Allowed");
 myGrid.addColumn(Customer::isAlcahol).setCaption("Feature");
-//myGrid.setSelectionMode(SelectionMode.MULTI);
+myGrid.setSelectionMode(SelectionMode.MULTI);
 myGrid.setSizeFull();
 
 // Add the grid to the list
@@ -84,6 +85,7 @@ setContent(layout);
 HorizontalLayout v = new HorizontalLayout(); //sub layout 1
 Label logo = new Label
 ("<H1>Marty Party Planners</H1> <p/> <h3>Please enter the details below and click Book</h3><br>", ContentMode.HTML);
+
 //VerticalLayout v2 = new VerticalLayout();//sub layout 2
         final TextField name = new TextField();
         name.setCaption("Name of party:");
@@ -99,7 +101,7 @@ Label logo = new Label
         children.setItems("Yes","No"); // the options availible 
         children.setPlaceholder("No option selected"); //same as TextField placeholder
 
-        Slider s = new Slider("Value", 1, 200);
+        Slider s = new Slider("How many people are invited to this party:", 1, 200);
         s.setValue(100.0);
         s.setWidth(s.getMax()+"px");
    
@@ -123,14 +125,29 @@ Label logo = new Label
 
         Button button = new Button("Book");
         button.addClickListener(e -> {
+            //if(Customer.Room_Name.length ==0){
+              //  return ("<strong> Please select at least one room <strong>",
+                // ContentMode.HTML);}
+            //if (value.length() ==0 ){ return"Please enter party name";}
+            //if (children.length()==0){return "Please 
+            //confirm if children attending your party";}
+            //if ((Customer.Alcahol == false)&&(children.length()!=0)){
+            //    return "You cannot select any rooms serving alcahol if 
+            //    children are attending";}
+            //if(s> sum.Capacity){return "You have selected rooms with a max 
+            //capacity of "+ sum.Capacity+ "which is not enough to hold "+ s;}; 
+            //else {return "Success! The party is booked now";};
             layout.addComponent(new Label("Your party " + name.getValue() 
                     + ", is now booked"));
+                    Label notyet = new Label
+("<h3>Your party is not booked yet</h3><br>", ContentMode.HTML);
+
         });
         
-        layout.addComponents( button,label);
+       // layout.addComponents(notyet);
         v.addComponents(name, s, children); //build sub layout
   //      v2.addComponents(button, button2); //build sub layout
-        layout.addComponents(logo,v); // build master layout
+        layout.addComponents(logo,v,button, label); // build master layout
         setContent(layout);
     }
 
